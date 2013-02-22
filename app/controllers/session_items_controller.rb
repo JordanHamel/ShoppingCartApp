@@ -6,11 +6,12 @@ class SessionItemsController < ApplicationController
   def create
     @session_item = SessionItem.new(params[:session_item])
 
-    if @session_item.save
-      redirect_to session_items_path
-    else
-      redirect_to new_session_path
+    respond_to do |format|
+      format.json {render :json => @session_item}
+      format.html {render :nothing => true}
     end
+
+    @session_item.save!
   end
 
   def index
@@ -25,7 +26,7 @@ class SessionItemsController < ApplicationController
   end
 
   def empty_cart
-    @session_items = SessionItem.all 
+    @session_items = SessionItem.all
     @session_id = current_session
 
     @session_items.each {|item| item.destroy}

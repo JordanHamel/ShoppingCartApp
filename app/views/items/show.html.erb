@@ -5,11 +5,6 @@
   <%= image_tag @item.photo %>
 </div>
 
-<div class="add-to-cart">
-  <%= simple_form_for(@session_item) do |f| %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.hidden_field :session_id, :value => @session_id %>
-
-    <%= f.submit "Add to cart" %>
-  <% end %>
+<div id="add-to-cart" data-item-id="<%= @item.id %>" data-session-id="<%= current_session.id %>" data-item-name="<%= @item.name %>" data-item-price="<%= @item.price %>">
+  Add to cart!
 </div>
