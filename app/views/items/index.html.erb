@@ -1,0 +1,39 @@
+<h1>The Baby Animal Store</h1>
+
+<div id="item-list-div">
+  <ul id="item-list-ul">
+    <% @items.each do |item| %>
+      <li id="list-item">
+        <%= item.name %>
+        <br>
+        <div id="animal-image"><%= image_tag item.photo %></div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<script type="text/javascript">
+  $(function () {
+
+    var next = function() {
+      console.log($('#item-list-ul').css("left"));
+
+      if (parseInt($('#item-list-ul').css("left")) <= -2800) {
+        $('#item-list-ul').css("left", 700);
+      }
+      $('#item-list-ul').animate({ left: '-=700'});
+      timer();;
+    };
+
+    function timer() {
+      setTimeout(next, 3000);
+    };
+
+    timer();
+
+  });
+</script>
+
+
+
