@@ -1,0 +1,6 @@
+<h1>Sign In</h1>
+
+<%= simple_form_for(@session, :url => session_path(@session)) do |f| %>
+  <%= f.input :user_id %>
+  <%= f.submit "Sign in!" %>
+<% end %>

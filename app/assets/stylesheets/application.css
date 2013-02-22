@@ -12,37 +12,49 @@
  *= require_tree .
  */
 
- h1 {
+h1 {
   text-align: center;
- }
+}
 
- #item-list-div {
+#item-list-div {
   height: 500px;
   width: 700px;
   overflow: hidden;
   position: relative;
   margin: auto;
- }
+}
 
- #item-list-ul {
+#item-list-ul {
   height: 500px;
   width: 3500px;
   position: absolute;
   top: 0;
   left: 0;
- }
+  text-align: center;
+}
 
- #list-item {
+.list-item {
   height: 500px;
   width: 700px;
   float: left;
- }
+  list-style-type: none;
+}
 
- #animal-image {
+.animal-image {
   max-width: 600px;
   max-height: 400px;
- }
+  margin: auto;
+}
 
- img {
+.remove-item-link {
+}
+
+#sidebar {
+  float: right;
+  width: 20%;
+  height: 100%;
+}
+
+img {
   width: 100%;
- }
+}

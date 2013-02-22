@@ -5,4 +5,5 @@ class Session < ActiveRecord::Base
 
   has_many :session_items
   belongs_to :user
+  validates_presence_of :user
 end

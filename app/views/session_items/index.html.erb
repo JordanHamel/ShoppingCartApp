@@ -1,0 +1,53 @@
+<h1>Your Shopping Cart!</h1>
+
+<ul id="cart-list">
+  <% @session_items.each do |session_item| %>
+  <li class="">
+    <%= "#{session_item.item.name}, #{session_item.item.price}0" %>
+    <div class="remove-item-link" data-id="<%= session_item.id%>">
+      Remove from cart
+    </div>
+    <br>
+  </li>
+  <% end %>
+</ul>
+
+<div class="empty-cart-link" data-session-id="<%= @session_id %>">
+  Empty Cart
+<%#= link_to "Empty Cart", empty_cart_session_items_path,
+    :method => :delete %>
+</div>
+
+
+<script type="text/javascript">
+
+  $(function() {
+    $('.remove-item-link').click( function () {
+      var that = this;
+      var session_item_id = $(this).attr('data-id');
+      $.post(
+        '/session_items/' + session_item_id,
+        {"_method":"delete"},
+        function() {
+          $(that).parent().remove();
+        }
+      );
+    });
+
+    $('.empty-cart-link').click( function () {
+      var that = this;
+      var session_id = $(this).attr('data-session-id');
+      $.post(
+        '/session_items/empty_cart',
+        {"_method":"delete"},
+        function() {
+          $('#cart-list').empty();
+        }
+
+      );
+
+    })
+
+  })
+
+</script>

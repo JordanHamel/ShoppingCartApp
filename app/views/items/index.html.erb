@@ -3,10 +3,12 @@
 <div id="item-list-div">
   <ul id="item-list-ul">
     <% @items.each do |item| %>
-      <li id="list-item">
+      <li class="list-item">
         <%= item.name %>
         <br>
-        <div id="animal-image"><%= image_tag item.photo %></div>
+        <div class="animal-image">
+          <%= link_to(image_tag(item.photo), item_path(item)) %>
+        </div>
       </li>
     <% end %>
   </ul>

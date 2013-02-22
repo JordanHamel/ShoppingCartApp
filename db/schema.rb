@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221223032) do
+ActiveRecord::Schema.define(:version => 20130222181114) do
 
   create_table "items", :force => true do |t|
     t.string   "photo"
