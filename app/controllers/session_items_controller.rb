@@ -6,12 +6,14 @@ class SessionItemsController < ApplicationController
   def create
     @session_item = SessionItem.new(params[:session_item])
 
-    respond_to do |format|
-      format.json {render :json => @session_item}
-      format.html {render :nothing => true}
+    if @session_item.save
+      respond_to do |format|
+        format.json {render :json => @session_item}
+        format.html {render :nothing => true}
+      end
+    else
+      render :nothing => true, :status => 500
     end
-
-    @session_item.save!
   end
 
   def index

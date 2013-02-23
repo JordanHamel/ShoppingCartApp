@@ -22,7 +22,7 @@
 <script type="text/javascript">
 
   $(function() {
-    $('.remove-item-link').click( function () {
+    $('#sidebar').on("click", '.remove-item-link', function () {
       var that = this;
       var session_item_id = $(this).attr('data-id');
       $.post(
@@ -59,26 +59,18 @@
             session_id: $(this).attr('data-session-id')
           }
         },
-        function() {
-          //$('#cart-list').append('<li>Added</li>');
+        function(data) {
           var ul = $('#cart-list').append('<li></li>');
           var listItem = ul.children().last();
           listItem.text(item_name + ', $' +item_price);
-          var div = listItem.append('<div>Remove from cart</div>');
-          var itemDiv = div.children();
-          itemDiv.addClass("remove-item-link").attr('data-id', item_id)
+
+          listItem.append('<div>Remove from cart</div>');
+          var div = listItem.children();
+          div.addClass("remove-item-link").attr('data-id', data.id);
 
         }
       );
     })
   })
-
-// <li class="">item_name, item_price
-//   <div class="remove-item-link" data-id="item_id" >
-//       Remove from cart
-//     </div>
-//     <br>
-//   </li>
-
 
 </script>
